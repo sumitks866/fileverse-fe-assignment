@@ -6,7 +6,7 @@ import NFT from './nft';
 
 function NFTContainer({account, chainId}) {
 
-  const addr = '0x7a7b02561263974d7903bde44d481c8ac6de4b5b';
+  // const addr = '0x7a7b02561263974d7903bde44d481c8ac6de4b5b';
 
   const [nftMeta, setNftMeta] = useState([])
   const [totalNFTs, setTotalNFTs] = useState(0)
@@ -22,7 +22,7 @@ function NFTContainer({account, chainId}) {
 
     const options = {
       chain: `0x${chainId}`,
-      address: addr,
+      address: account,
       limit,
       offset,
     };
