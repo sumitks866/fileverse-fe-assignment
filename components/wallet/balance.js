@@ -8,7 +8,7 @@ function Balance({account, chainId}) {
 
   const fetchNativeBalance = async () => {
     const options = {
-      chain: `0x${chainId}`,
+      chain: `0x${chainId.toString(16)}`,
       address: account,
     };
     //console.log(account);

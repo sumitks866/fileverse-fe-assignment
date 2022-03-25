@@ -7,7 +7,7 @@ import NFTContainer from "../components/wallet/NFTContainer"
 
 export default function Home() {
  
-  const { active, account, library, connector, activate, deactivate, chainId } = useWeb3React()
+  const { active, account, activate, deactivate, chainId } = useWeb3React()
 
   async function connect() {
     try {

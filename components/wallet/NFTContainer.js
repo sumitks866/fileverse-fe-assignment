@@ -6,8 +6,6 @@ import NFT from './nft';
 
 function NFTContainer({account, chainId}) {
 
-  // const addr = '0x7a7b02561263974d7903bde44d481c8ac6de4b5b';
-
   const [nftMeta, setNftMeta] = useState([])
   const [totalNFTs, setTotalNFTs] = useState(0)
   const [offset, setOffset] = useState(0)
@@ -21,7 +19,7 @@ function NFTContainer({account, chainId}) {
     setLoading(true)
 
     const options = {
-      chain: `0x${chainId}`,
+      chain: `0x${chainId.toString(16)}`,
       address: account,
       limit,
       offset,
@@ -51,14 +49,24 @@ function NFTContainer({account, chainId}) {
       }
     }
 
-    setNftMeta([...nftMeta,...data])
+    if(offset === 0)
+    {
+      setNftMeta(data);
+    }
+    else
+      setNftMeta([...nftMeta,...data])
+
     setLoading(false)
 
   };
 
   useEffect(() => {
+    setOffset(0);
+  },[account, chainId])
+
+  useEffect(() => {
     fetchNFTs();
-  }, [chainId,offset])
+  }, [account, chainId,offset])
   
   return (
     <div className='w-10/12 mb-10'>
